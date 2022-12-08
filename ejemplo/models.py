@@ -10,3 +10,19 @@ class Familiar(models.Model):
 
 class Dummy (models.Model):
     nombre = models.CharField(max_length=100)
+
+class Mascota(models.Model):
+    apodo = models.CharField(max_length=100)
+    raza = models.CharField(max_length=200)
+    edad = models.IntegerField()
+    
+    def __str__(self):
+      return f"{self.apodo}, {self.raza}, {self.edad}, {self.id}"
+
+class Vehiculo(models.Model):
+    marca = models.CharField(max_length=100)
+    modelo = models.CharField(max_length=200)
+    patente = models.CharField(max_length=10)
+    
+    def __str__(self):
+      return f"{self.marca}, {self.modelo}, {self.patente}, {self.id}"

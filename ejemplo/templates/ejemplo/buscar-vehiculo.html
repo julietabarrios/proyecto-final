@@ -1,0 +1,16 @@
+{% extends 'ejemplo/base.html' %}
+{% block titulo%} Buscar Vehiculo por Marca {% endblock %}
+{% block contenido %}
+  
+  <form action="/mi-vehiculo/buscar" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+  </form>
+
+  {% for vehiculo in lista_vehiculos %}
+      <ul>
+          <li> Marca: {{vehiculo.marca}}, Modelo: {{vehiculo.modelo}}, Patente: {{vehiculo.patente}}</li>
+      </ul>
+  {% endfor %}
+{% endblock %}
