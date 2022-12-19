@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from ejemplo.models import Familiar, Mascota, Vehiculo
 from ejemplo.forms import Buscar, FamiliarForm, MascotaForm, VehiculoForm, BuscarMascota, BuscarVehiculo
 from django.views import View
+from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView
 
 def index(request):
     return render(request, "ejemplo/saludar.html")
@@ -93,14 +94,13 @@ class ActualizarFamiliar(View):
       return render(request, self.template_name, {"form": form})
 
 class BorrarFamiliar(View):
-
-  template_name = 'ejemplo/familiares.html'
+  template_name = 'ejemplo/borrar_familiares.html'
  
   def get(self, request, pk): 
       familiar = get_object_or_404(Familiar, pk=pk)
       familiar.delete()
       familiar = Familiar.objects.all()
-      return render(request, self.template_name, {'lista_familiares': familiar})
+      return render(request, self.template_name, {'lista_familiares':familiar})
 
 
 #MASCOTA
@@ -175,7 +175,7 @@ class ActualizarMascota(View):
       return render(request, self.template_name, {"form": form})
 
 class BorrarMascota(View):
-  template_name = 'ejemplo/mascotas.html'
+  template_name = 'ejemplo/borrar_mascotas.html'
  
 
   def get(self, request, pk): 
@@ -258,7 +258,7 @@ class ActualizarVehiculo(View):
       return render(request, self.template_name, {"form": form})
 
 class BorrarVehiculo(View):
-  template_name = 'ejemplo/vehiculos.html'
+  template_name = 'ejemplo/borrar_vehiculos.html'
  
 
   def get(self, request, pk): 
@@ -267,3 +267,22 @@ class BorrarVehiculo(View):
       vehiculo = Vehiculo.objects.all()
       return render(request, self.template_name, {'lista_vehiculos': vehiculo})
 
+class FamiliarDetalle(DetailView):
+  model = Familiar
+
+class FamiliarList(ListView):
+  model = Familiar
+
+class FamiliarCrear(CreateView):
+    model = Familiar
+    success_url = "/panel-familia"
+    fields = ["nombre", "direccion", "numero_pasaporte"]
+
+class FamiliarBorrar(DeleteView):
+  model = Familiar
+  success_url = "/panel-familia"
+
+class FamiliarActualizar(UpdateView):
+  model = Familiar
+  success_url = "/succes_updated_message"
+  fields = ["nombre", "direccion", "numero_pasaporte"]

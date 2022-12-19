@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ejemplo.views import index, saludar_a, sumar, buscar, monstrar_familiares, BuscarFamiliar, AltaFamiliar, ActualizarFamiliar, BorrarFamiliar, mostrar_mascotas, mostrar_vehiculos, BuscarMascota, BuscarVehiculo, ActualizarMascota, ActualizarVehiculo, BorrarMascota, BorrarVehiculo, AltaMascota, AltaVehiculo
-
+from ejemplo.views import index, saludar_a, sumar, buscar, monstrar_familiares, BuscarFamiliar, AltaFamiliar, ActualizarFamiliar, BorrarFamiliar, mostrar_mascotas, mostrar_vehiculos, BuscarMascota, BuscarVehiculo, ActualizarMascota, ActualizarVehiculo, BorrarMascota, BorrarVehiculo, AltaMascota, AltaVehiculo, FamiliarDetalle, FamiliarList, FamiliarCrear, FamiliarBorrar, FamiliarActualizar
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,8 +25,8 @@ urlpatterns = [
     path('sumar/<int:a>/<int:b>/', sumar),
     path('buscar/', buscar),
     path('mi-familia/', monstrar_familiares),
-    path('mi-familia/buscar', BuscarFamiliar.as_view()),
-    path('mi-familia/alta', AltaFamiliar.as_view()),
+    path('mi-familia/buscar', BuscarFamiliar.as_view(), name= 'mi-familia/buscar'),
+    path('mi-familia/alta', AltaFamiliar.as_view(), name= 'mi-familia/alta'),
     path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()),
     path('mi-familia/borrar/<int:pk>', BorrarFamiliar.as_view()),
     path('mi-mascota/', mostrar_mascotas),
@@ -38,5 +38,11 @@ urlpatterns = [
     path('mi-vehiculo/buscar', BuscarVehiculo.as_view()),
     path('mi-vehiculo/alta', AltaVehiculo.as_view()),
     path('mi-vehiculo/actualizar/<int:pk>', ActualizarVehiculo.as_view()),
-    path('mi-vehiculo/borrar/<int:pk>', BorrarVehiculo.as_view())
+    path('mi-vehiculo/borrar/<int:pk>', BorrarVehiculo.as_view()),
+    path('panel-familia/<int:pk>/detalle', FamiliarDetalle.as_view()),
+    path('panel-familia/', FamiliarList.as_view()),
+    path('panel-familia/crear', FamiliarCrear.as_view()),
+    path('panel-familia/<int:pk>/borrar', FamiliarBorrar.as_view()),
+    path('panel-familia/<int:pk>/actualizar', FamiliarActualizar.as_view()),
+    path('succes_updated_message', TemplateView.as_view(template_name ='ejemplo/succes_updated_message.html')),
     ]
