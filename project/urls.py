@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from ejemplo.views import index, saludar_a, sumar, buscar, monstrar_familiares, BuscarFamiliar, AltaFamiliar, ActualizarFamiliar, BorrarFamiliar, mostrar_mascotas, mostrar_vehiculos, BuscarMascota, BuscarVehiculo, ActualizarMascota, ActualizarVehiculo, BorrarMascota, BorrarVehiculo, AltaMascota, AltaVehiculo, FamiliarDetalle, FamiliarList, FamiliarCrear, FamiliarBorrar, FamiliarActualizar
+from ejemplo.views import index, saludar_a, sumar, monstrar_familiares, BuscarFamiliar, AltaFamiliar, ActualizarFamiliar, BorrarFamiliar, mostrar_mascotas, mostrar_vehiculos, BuscarMascota, BuscarVehiculo, ActualizarMascota, ActualizarVehiculo, BorrarMascota, BorrarVehiculo, AltaMascota, AltaVehiculo, FamiliarDetalle, FamiliarList, FamiliarCrear, FamiliarBorrar, FamiliarActualizar
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -23,10 +23,9 @@ urlpatterns = [
     path('saludar/', index),
     path('saludar-a/<nombre>', saludar_a),
     path('sumar/<int:a>/<int:b>/', sumar),
-    path('buscar/', buscar),
     path('mi-familia/', monstrar_familiares),
-    path('mi-familia/buscar', BuscarFamiliar.as_view(), name= 'mi-familia/buscar'),
-    path('mi-familia/alta', AltaFamiliar.as_view(), name= 'mi-familia/alta'),
+    path('mi-familia/buscar', BuscarFamiliar.as_view()),
+    path('mi-familia/alta', AltaFamiliar.as_view()),
     path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()),
     path('mi-familia/borrar/<int:pk>', BorrarFamiliar.as_view()),
     path('mi-mascota/', mostrar_mascotas),

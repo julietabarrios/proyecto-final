@@ -1,7 +1,8 @@
 {% extends 'ejemplo/base.html' %}
 {% block titulo%} Buscar Familiares por nombre {% endblock %}
 {% block contenido %}
-  <form action="{% url 'mi-familia/buscar' %}" method="post"></form>
+
+  <form action="/mi-familia/buscar" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Submit">
