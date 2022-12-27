@@ -1,0 +1,22 @@
+{% extends 'conoce_lugares/base.html' %}
+
+{% block contenido %}
+{% if user.is_authenticated %}
+    <a href="{% url 'conoce-lugares-crear' %}">Crear Post</a>
+    <a href="{% url 'conoce-lugares-mensajes-listar' %}">Ver Mensajes</a>
+    <a href="{% url 'conoce-lugares-users-actualizar' user.id %}">Actualizar User</a>
+    <a href="{% url 'conoce-lugares-avatars-actualizar' user.id %}">Actualizar Avatar</a>
+{% endif %}
+<ul>
+{% for post in object_list %}
+    <li>
+        {{post.publicado_el}} - - {{post.titulo}} 
+        {% if user.is_superuser %}
+            <a href="{% url 'conoce-lugares-borrar' post.id %}">Borrar</a>
+            <a href="{% url 'conoce-lugares-actualizar' post.id %}">Actualizar</a>
+        {% endif %}
+        <a href="{% url 'conoce-lugares-detalle' post.id %}">Ver</a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
