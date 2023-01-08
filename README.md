@@ -3,7 +3,7 @@ Este proyecto final consiste en una página para poder cargar posteos. Estos pos
 
 El objetivo principial de la página es poder compartir lugares del mundo que vale la pena visitar por eso la app se llama conoce_lugares.
 
-Los posts y su detalle lo puede ver cualquier persona que ingrese en el url de nombre= "conoce-lugares-index", a su vez podran ingresar al about en donde explico brevemente quien soy y por qué creé la página y a Contacto para poder enviar un mensaje, colocando email, nombre y texto (detallado en el modelo Mensaje en models.py). Sin embargo, para poder cargar, modificar o borrar (CRUD) un posteo uno debe registrarse y luego ingresar en el servidor. 
+Los posts y su detalle lo puede ver cualquier persona que ingrese en el url de nombre= "conoce-lugares-index", a su vez podran ingresar al about en donde explico brevemente quien soy y por qué creé la página y a Contacto para poder enviar un mensaje, colocando email, nombre y texto (detallado en el modelo Mensaje en models.py). Sin embargo, para poder cargar, modificar o borrar (CRUD) un posteo uno debe registrarse y solicitar acceso de staff. Este acceso se configura en el url 'admin'.
 
 La funcionalidad del CRUD queda definida en views.py con las clases PostCrear, PostActualizar y PostBorrar.
 
