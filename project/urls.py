@@ -40,8 +40,6 @@ urlpatterns = [
     path('conoce-lugares/about', TemplateView.as_view(template_name='conoce_lugares/about.html'), name="conoce-lugares-about"),
     path('conoce-lugares/users/<int:pk>/actualizar/', UserActualizar.as_view(), name="conoce-lugares-users-actualizar"),
     path('conoce-lugares/avatars/<int:pk>/actualizar/', AvatarActualizar.as_view(), name="conoce-lugares-avatars-actualizar"),
-    path('conoce-lugares/blog', TemplateView.as_view(template_name='conoce-lugares/blog.html'), name="conoce-lugares-blog"),
-    path('conoce-lugares/home', TemplateView.as_view(template_name='conoce-lugares/home.html'), name="conoce-lugares-home"),
     ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
